@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="10dp"
+    android:layout_margin="10dp"
+    android:elevation="8dp"
+    app:cardCornerRadius="8dp"
+    app:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:padding="4dp">
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/ic_launcher_background"
+            android:id="@+id/img"
+           android:layout_centerHorizontal="true"
+            android:padding="2dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Name of Player"
+            android:textStyle="bold"
+            android:id="@+id/header"
+            android:layout_below="@+id/img"
+            android:padding="3dp"
+            android:layout_marginLeft="10dp"
+            android:textSize="20sp"
+            android:gravity="center"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" Player Desc"
+            android:id="@+id/desc"
+            android:layout_below="@+id/header"
+            android:padding="3dp"
+            android:layout_marginLeft="10dp"
+            android:textSize="15sp"
+            android:gravity="center"/>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
