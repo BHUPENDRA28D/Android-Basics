@@ -11,6 +11,11 @@ public class Model {
         this.imageResourceId = imageResourceId;
     }
 
+    public Model() {
+
+    }
+
+
     public String getName() {
         return name;
     }

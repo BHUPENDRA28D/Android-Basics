@@ -1,16 +1,21 @@
 package com.example.more_in_recyclerview;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     RecyclerView rcv;
+    MyAdapter adapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this,2);
         rcv.setLayoutManager(gridLayoutManager);
 
-        MyAdapter adapter = new MyAdapter(dateQueue(),getApplicationContext());
+         adapter = new MyAdapter(dateQueue(),getApplicationContext());
         rcv.setAdapter(adapter);
 
 
@@ -34,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     public ArrayList<Model> dateQueue(){
         ArrayList<Model> data = new ArrayList<>();
 
+        data.add(new Model("Shubhman Gill","BALANCED -- (Righthand Opener)",R.drawable.gill));
         data.add(new Model("Rohit Sharma","RADICAL -- (Righthand Opener)",R.drawable.rohit));
         data.add(new Model("Lokesh Rahul","BALANCED -- (Righthand Opener WK)",R.drawable.rahul));
         data.add(new Model("Virat Kohli","RADICAL -- (Righthand Batsman)",R.drawable.kohli));
@@ -49,4 +55,30 @@ public class MainActivity extends AppCompatActivity {
 
         return data;
     }
+
+
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//
+//        getMenuInflater().inflate(R.menu.mainmenu,menu);
+//        MenuItem item = findViewById(R.id.search_menu);
+//
+//        SearchView searchView =(SearchView)item.getActionView();
+//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//            @Override
+//            public boolean onQueryTextSubmit(String query) {
+//
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String newText) {
+//
+//               adapter.getFilter().filter(newText);
+//                return false;
+//            }
+//        });
+//
+//        return super.onCreateOptionsMenu(menu);
+//    }
 }

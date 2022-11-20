@@ -6,6 +6,8 @@ import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,22 +17,25 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
+public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>  {
 
     //Creating ArrayList which will get data of original arraylist..
     ArrayList<Model> data;
     Context context;
+    ArrayList<Model> backup;
 
-    public MyAdapter(ArrayList<Model> data,Context context)
-    {    this.context =context;
+    public MyAdapter(ArrayList<Model> data, Context context) {
+        this.context = context;
         this.data = data;
+        backup = new ArrayList<>(data);
     }
 
     @NonNull
     @Override
-    public MyAdapter.ViewHolder onCreateViewHolder( ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.singlerow,parent,false);
+    public MyAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.singlerow, parent, false);
         return new ViewHolder(view);
 
     }
@@ -47,11 +52,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(context,DetailActivity.class);
+                Intent i = new Intent(context, DetailActivity.class);
                 //putExtra methode used to send information between activity..
-                i.putExtra("name",temp.getName());
-                i.putExtra("desc",temp.getDescription());
-                i.putExtra("image",temp.getImageResourceId());
+                i.putExtra("name", temp.getName());
+                i.putExtra("desc", temp.getDescription());
+                i.putExtra("image", temp.getImageResourceId());
 
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
@@ -68,9 +73,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
 
     // View Holder class takes reference of layout.
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView img;
-        TextView header,desc;
+        TextView header, desc;
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -82,4 +87,41 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
 
     }
+
+   /* @Override
+    public Filter getFilter() {
+        return null;
+    }
+
+    Filter filter = new Filter() {
+        @Override
+
+//        Filter performed through background Thred
+        protected FilterResults performFiltering(CharSequence keyword) {
+            ArrayList<Model> fiterdata= new ArrayList<>();
+
+            if(keyword.toString().isEmpty())
+                fiterdata.addAll(backup);
+
+            else{
+                for (Model obj : backup){
+                    if(obj.getName().toString().toLowerCase().contains(keyword.toString().toLowerCase()))
+                       fiterdata.add(obj);
+                }
+            }
+
+            FilterResults filterResults = new FilterResults();
+            filterResults.values = fiterdata;
+            return filterResults;
+        }
+
+        //        Filter performed through UI Thred
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+
+            data.clear();
+            data.addAll((ArrayList<Model>)results.values);
+            notifyDataSetChanged();
+        }
+    };*/
 }
