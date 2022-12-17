@@ -5,12 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@color/black_shade_1">
+    >
 
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/idToolbar">
+        android:id="@+id/idToolbar"
+        android:background="@color/black">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -18,9 +19,9 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="News Wallaha"
-                android:textSize="20sp"
-                android:textColor="@color/yellow"
+                android:text="Newsify"
+                android:textSize="30sp"
+                android:textColor="@color/white"
                 android:padding="4dp"
                 android:textAlignment="center"
                 android:gravity="center"
@@ -44,18 +45,18 @@
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:id="@+id/idRVNews"
         android:orientation="vertical"
         tools:listitem="@layout/news_rv_item"
         android:layout_below="@+id/idRVCategories"
         android:layout_marginTop="5dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+        />
 
     <ProgressBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/idPBLoading"
-
         android:visibility="gone"
         android:layout_centerInParent="true"/>
 

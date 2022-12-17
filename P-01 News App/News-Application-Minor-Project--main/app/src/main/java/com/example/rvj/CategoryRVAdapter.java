@@ -42,10 +42,11 @@ public class CategoryRVAdapter extends RecyclerView.Adapter<CategoryRVAdapter.Vi
         holder.categoryTV.setText(categoryRVModal.getCategory());
 
         Picasso.get().load(categoryRVModal.getCategoryImageUrl()).into(holder.categoryIV);
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                categorClickInterface.onCategotyClick(position);
+               categorClickInterface.onCategoryClick(holder.getAdapterPosition());
             }
         });
 
@@ -57,7 +58,7 @@ public class CategoryRVAdapter extends RecyclerView.Adapter<CategoryRVAdapter.Vi
     }
 
     public interface CategorClickInterface{
-        void onCategotyClick(int position);
+        void onCategoryClick(int position);
     }
 
 
@@ -67,8 +68,9 @@ public class CategoryRVAdapter extends RecyclerView.Adapter<CategoryRVAdapter.Vi
         private ImageView categoryIV;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            categoryIV =itemView.findViewById(R.id.idCatIV);
             categoryTV = itemView.findViewById(R.id.idTVCategory);
-            categoryIV =itemView.findViewById(R.id.idIVCategory);
+
         }
     }
 }

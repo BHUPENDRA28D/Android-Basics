@@ -14,7 +14,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/idIVCategory"
+            android:id="@+id/idCatIV"
             android:src="@color/yellow"
             android:scaleType="centerCrop"/>
 

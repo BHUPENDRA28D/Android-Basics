@@ -41,32 +41,37 @@ public class MainActivity extends AppCompatActivity implements CategoryRVAdapter
         categoryRVModalArrayList =new ArrayList<>();
 
         newsRVAdapter =new NewsRVAdapter(articlesArrayList,this);
-        categoryRVAdapter =new CategoryRVAdapter(categoryRVModalArrayList,this,this::onCategotyClick);
-        newsRV.setLayoutManager(new LinearLayoutManager(this));
+        categoryRVAdapter =new CategoryRVAdapter(categoryRVModalArrayList,this,this::onCategoryClick);
 
+        newsRV.setLayoutManager(new LinearLayoutManager(this));
         newsRV.setAdapter(newsRVAdapter);
         categoryRV.setAdapter(categoryRVAdapter);
 
         getCategories();
+
         getNews("All");
+
         newsRVAdapter.notifyDataSetChanged();
 
 
     }
 
     private void getCategories() {
-        categoryRVModalArrayList.add(new CategoryRVModal("All", "https://unsplash.com/photos/Oaqk7qqNh_c"));
-        categoryRVModalArrayList.add(new CategoryRVModal("Science", "https://unsplash.com/photos/Q1p7bh3SHj8"));
-        categoryRVModalArrayList.add(new CategoryRVModal("Entertainment", "https://unsplash.com/photos/sqJ4tLBiurw"));
-        categoryRVModalArrayList.add(new CategoryRVModal("Technology", "https://unsplash.com/photos/XJXWbfSo2f0"));
-        categoryRVModalArrayList.add(new CategoryRVModal("Sports", "https://unsplash.com/photos/9HI8UJMSdZA"));
-        categoryRVModalArrayList.add(new CategoryRVModal("Health", "https://unsplash.com/photos/NTyBbu66_SI"));
-        categoryRVModalArrayList.add(new CategoryRVModal("Business", "https://unsplash.com/photos/fiXLQXAhCfk"));
-        categoryRVModalArrayList.add(new CategoryRVModal("General", "https://unsplash.com/photos/bjej8BY1JYQ"));
+        categoryRVModalArrayList.add(new CategoryRVModal("All", "https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Z2xvYmFsfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"));
+        categoryRVModalArrayList.add(new CategoryRVModal("Technology", "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8VGVjaHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"));
+        categoryRVModalArrayList.add(new CategoryRVModal("Science", "https://images.unsplash.com/photo-1590959651373-a3db0f38a961?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fFBoeXNpY3N8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"));
+        categoryRVModalArrayList.add(new CategoryRVModal("Sports", "https://images.unsplash.com/photo-1512719994953-eabf50895df7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Q3JpY2tldHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"));
+        categoryRVModalArrayList.add(new CategoryRVModal("General", "https://images.unsplash.com/photo-1571118027186-d4e2f9cb23cd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTN8fHRvcGxlc3MlMjB3b21hbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"));
+        categoryRVModalArrayList.add(new CategoryRVModal("Business", "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c3RvY2slMjBtYXJrZXR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"));
+        categoryRVModalArrayList.add(new CategoryRVModal("Entertainment", "https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8bmV0ZmxpeHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"));
+        categoryRVModalArrayList.add(new CategoryRVModal("Health", "https://images.unsplash.com/photo-1524863479829-916d8e77f114?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8eW9nYXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"));
+
+
 
         categoryRVAdapter.notifyDataSetChanged();
 
     }
+
 
     private void getNews(String category){
 
@@ -110,12 +115,10 @@ public class MainActivity extends AppCompatActivity implements CategoryRVAdapter
     }
 
 
-
     @Override
-    public void onCategotyClick(int position) {
-
-        String category =categoryRVModalArrayList.get(position).getCategory();
-         getNews(category);
+    public void onCategoryClick(int position) {
+        String category = categoryRVModalArrayList.get(position).getCategory();
+        getNews(category);
 
     }
 }
